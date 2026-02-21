@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رقمنة الأراضي الفلاحية - المهندس حاج عبد القادر سمير</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32; /* أخضر غامق فلاحي */
+            --secondary-color: #f5f5f5;
+            --accent-color: #ffd600;
+            --text-dark: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+        header {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .container {
+            max-width: 1000px;
+            margin: -30px auto 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .intro-card {
+            background: #e8f5e9;
+            border-right: 6px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1 { margin: 0; font-size: 2.2rem; }
+        h2 { color: var(--primary-color); border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-top: 30px; }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .video-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .video-info { padding: 15px; }
+        .video-info h3 { font-size: 1.1rem; margin: 0 0 10px; color: var(--primary-color); height: 50px; overflow: hidden; }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .container { margin-top: 0; border-radius: 0; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>رقمنة الأراضي الفلاحية</h1>
+    <p>بوابة المهندس التقنية لتطوير الفلاحة</p>
+</header>
+
+<div class="container">
+    <div class="intro-card">
+        <p><strong>تعريف بصاحب المحتوى:</strong> حاج عبد القادر سمير، مهندس رئيسي فلاحي بمديرية المصالح الفلاحية لولاية تلمسان.</p>
+        <p>نعمل من خلال هذا البرنامج على <strong>رقمنة الأراضي الفلاحية (SAU)</strong> بدقة متناهية، مما يتيح لنا حساب المساحات بدقة وبناء قاعدة بيانات إحصائية فعالة لدعم اتخاذ القرارات الاستراتيجية في القطاع الفلاحي.</p>
+    </div>
+
+    <h2>دليل استخدام برنامج QGIS في الرقمنة</h2>
+    <div class="video-grid">
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/uhgcMapaLAw" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>المقدمة والتعريف</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/vgDLf2Fq8gk" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>متطلبات تشغيل QGIS</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/OGDFM247veU" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>تثبيت البرنامج (Win 10/11)</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/VukMOkjc6Q0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>إعدادات وفتح مشروع جديد</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Y3Gzkqu5QiQ" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>رسم الأرض على الطبقة المستهدفة</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/UYbhoD-qeIc" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>حذف مساحة غير فلاحية (داخلية)</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/GLKCVIbCijE" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>حذف مساحة تشطر الأرض لقسمين</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Tc746GM8eY0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>تعديل حدود الأرض المرسومة</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/SAifbiTFoac" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>تجنب تداخل الحدود المشتركة</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_0B9vHsUeOA" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>التحقق من عدم تداخل الحدود</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/TrWqqBku6BY" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>خاصية منع تداخل الحدود</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/mkWVeX0zx2Q" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>جمع الملفات من أجهزة مختلفة</h3></div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/KgVCioDJHRQ" allowfullscreen></iframe>
+            </div>
+            <div class="video-info"><h3>مقدمة عن تطبيق Qfield</h3></div>
+        </div>
+
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 20px; color: #666; font-size: 0.9rem;">
+    جميع الحقوق محفوظة للمهندس حاج عبد القادر سمير &copy; 2026
+</footer>
+
+</body>
+</html>
