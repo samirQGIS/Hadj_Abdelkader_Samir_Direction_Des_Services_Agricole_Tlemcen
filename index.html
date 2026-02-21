@@ -616,55 +616,55 @@
             border: none;
         }
 
-        /* Thumbnail click-to-play */
-        .yt-thumb {
+        /* Thumbnail click-to-open */
+        .yt-thumb-link {
             position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            cursor: pointer;
+            display: block;
+            text-decoration: none;
             overflow: hidden;
         }
 
-        .yt-thumb img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease, filter 0.3s;
-            filter: brightness(0.85);
-        }
-
-        .yt-thumb:hover img {
-            transform: scale(1.05);
-            filter: brightness(0.65);
-        }
-
-        .yt-play-btn {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 62px; height: 62px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 50%;
+        .yt-overlay {
+            position: absolute; inset: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: transform 0.25s, background 0.25s;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            gap: 10px;
+            background: rgba(0,0,0,0);
+            transition: background 0.3s;
         }
 
-        .yt-play-btn i {
-            color: #ff0000;
-            font-size: 1.5rem;
-            margin-right: -3px; /* optical center */
+        .yt-thumb-link:hover .yt-overlay {
+            background: rgba(0,0,0,0.45);
         }
 
-        .yt-thumb:hover .yt-play-btn {
-            transform: translate(-50%, -50%) scale(1.12);
-            background: white;
+        .yt-play-circle {
+            transform: scale(0.9);
+            transition: transform 0.3s;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
         }
 
-        .yt-thumb-loaded iframe {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            border: none;
+        .yt-thumb-link:hover .yt-play-circle {
+            transform: scale(1.1);
+        }
+
+        .yt-watch-text {
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 14px;
+            border-radius: 50px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .yt-thumb-link:hover .yt-watch-text {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .video-number {
@@ -843,14 +843,14 @@
             منصة تعليمية متخصصة
         </div>
         <h1>رقمنة <span class="highlight">الأراضي الفلاحية</span> بدقة عالية</h1>
-        <p>تعلم استخدام برنامج QGIS من الصفر حتى الاحتراف، مع المهندس حاج عبد القادر سمير، مهندس فلاحي متخصص في التقنيات الجيومكانية.</p>
+        <p>تعلم استخدام برنامج QGIS من الصفر حتى الاحتراف، مع المهندس حاج عبد القادر سمير، مهندس فلاحي رئيسي متخصص .</p>
 
         <div class="hero-actions">
             <a href="#videos" class="btn-primary">
                 <i class="fas fa-play"></i>
                 ابدأ التعلم الآن
             </a>
-            <a href="https://youtube.com/@samirqgis" target="_blank" class="btn-secondary">
+            <a href="https://youtube.com/@QGISSolo" target="_blank" class="btn-secondary">
                 <i class="fab fa-youtube"></i>
                 قناة يوتيوب
             </a>
@@ -892,12 +892,12 @@
             <div class="about-visual reveal">
                 <div class="about-avatar">
                     <div class="about-avatar-icon">🧑‍💼</div>
-                    <div class="about-avatar-name">م. حاج عبد القادر سمير</div>
+                    <div class="about-avatar-name"> حاج عبد القادر سمير</div>
                     <div class="about-avatar-role">مهندس رئيسي فلاحي — مديرية المصالح الفلاحية، ولاية تلمسان</div>
                 </div>
                 <div class="about-badge-pill">
                     <i class="fas fa-map"></i>
-                    خبير في نظم المعلومات الجغرافية
+                     نظم المعلومات الجغرافية
                 </div>
             </div>
 
@@ -962,7 +962,7 @@
     <p class="footer-desc">منصة المهندس حاج عبد القادر سمير للتقنيات الجيومكانية في خدمة الفلاحة الجزائرية — تلمسان</p>
 
     <div class="footer-social">
-        <a href="https://youtube.com/@samirqgis" target="_blank" title="يوتيوب">
+        <a href="https://youtube.com/@QGISSolo" target="_blank" title="يوتيوب">
             <i class="fab fa-youtube"></i>
         </a>
         <a href="#share" title="شارك">
@@ -1004,13 +1004,23 @@
         card.innerHTML = `
             <div class="video-thumb-wrapper">
                 <span class="video-number">الدرس ${i + 1}</span>
-                <iframe 
-                    src="https://www.youtube.com/embed/${vid.id}"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    referrerpolicy="no-referrer"
-                ></iframe>
+                <a href="https://www.youtube.com/watch?v=${vid.id}" target="_blank" class="yt-thumb-link">
+                    <img 
+                        src="https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg"
+                        alt="${vid.title}"
+                        loading="lazy"
+                        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+                    >
+                    <div class="yt-overlay">
+                        <div class="yt-play-circle">
+                            <svg viewBox="0 0 68 48" width="68" height="48">
+                                <path d="M66.52,7.74C65.68,4.55,63.17,2.05,59.97,1.21C54.74,-.14,34,0,34,0S13.26,-.14,8.03,1.21C4.84,2.05,2.33,4.55,1.48,7.74C.14,12.97,0,24,0,24S.14,35.03,1.48,40.26C2.33,43.45,4.84,45.95,8.03,46.79C13.26,48.14,34,48,34,48S54.74,48.14,59.97,46.79C63.17,45.95,65.68,43.45,66.52,40.26C67.86,35.03,68,24,68,24S67.86,12.97,66.52,7.74Z" fill="#ff0000"/>
+                                <path d="M45,24 27,14 27,34" fill="white"/>
+                            </svg>
+                        </div>
+                        <span class="yt-watch-text">شاهد على يوتيوب</span>
+                    </div>
+                </a>
             </div>
             <div class="video-body">
                 <h3>${vid.title}</h3>
